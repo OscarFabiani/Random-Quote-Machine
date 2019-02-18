@@ -1,9 +1,11 @@
+//Setting variales for elements.
 let body = document.body;
 let box = document.getElementById('quote-box');
 let text = document.getElementById('text');
 let author = document.getElementById('author');
 let newQuote = document.getElementById('new-quote');
 let tweetQuote = document.getElementById('tweet-quote');
+
 const quotes = [
   ['-The Godfather', '"I\'m going to make him an offer he can\'t refuse.'],
   ['-The Wizard of Oz', '"Toto, I\'ve got a feeling we\'re not in Kansas anymore.'],
@@ -14,6 +16,7 @@ const quotes = [
   ['-Rocky', '"He doesn\'t know it\'s a show, he thinks it\'s a fight!'],
   ['-Braveheart', '"You have bled with Wallace, now bleed with me.']
 ];
+
 const colors = [
   'red',
   'green',
@@ -21,87 +24,79 @@ const colors = [
   'orange',
   'brown'
 ]
+
 function random(list) {
+  //This function takes a list and returns a random index place.
+
   return Math.floor(Math.random() * list.length);
 }
-function randomQuote() {
-  //TRY TO MIGRATE TEXT/AUTHOR COLOR CHANGE AND INCORPORATE TEXT/AUTHOR FADE OUT/IN
-  let index = random(quotes);
-  //checking if current quote/author is the same as the replacement and re-randomizes replacement if so.
-  while (author.innerText == quotes[index][0]) {
-    index = random(quotes);
-  }
-  //sets repacement quote/author.
-  text.innerHTML = quotes[index][1];
-  author.innerHTML = quotes[index][0];
-}
-function colorChange() {
-  //Remove class(if present), trigger reflow, and add class.
+
+function change() {
+  //This function changes colors and text content of multiple elements.
+
+  //set random color and index and check for duplicate.
   let color = colors[random(colors)];
   while (color == body.style.backgroundColor) {
     color = colors[random(colors)];
   }
+  let index = random(quotes);
+  while (author.innerText == quotes[index][0]) {
+    index = random(quotes);
+  }
+
+  //set text and author after 1 second
+  setTimeout(function() {text.innerHTML = quotes[index][1];}, 500);
+  setTimeout(function() {author.innerHTML = quotes[index][0];}, 500);
+
+  //set css variable to random color.
   body.style.setProperty('--color1', color);
   text.style.setProperty('--color1', color);
   author.style.setProperty('--color1', color);  
   newQuote.style.setProperty('--color1', color);
   tweetQuote.style.setProperty('--color1', color);
-  body.classList.remove('anim1');
-  text.classList.remove('anim2');
-  //text.classList.remove('anim3'); //trying to incorporate text fade out/in
-  author.classList.remove('anim2');
-  newQuote.classList.remove('anim1');
-  tweetQuote.classList.remove('anim1');
-  body.offsetHeight; //trigger reflow
+
+  //add classes
   body.classList.add('anim1');
-  text.classList.add('anim2');
-  //text.classList.add('anim3'); //trying to incorporate text fade out/in
-  author.classList.add('anim2');
   newQuote.classList.add('anim1');
   tweetQuote.classList.add('anim1');
-  body.addEventListener('animationend', function() {body.style.backgroundColor = color;});
-  text.addEventListener('animationend', function() {text.style.color = color;});
-  author.addEventListener('animationend', function() {author.style.color = color;});
-  newQuote.addEventListener('animationend', function() {newQuote.style.backgroundColor = color;});
-  tweetQuote.addEventListener('animationend', function() {tweetQuote.style.backgroundColor = color;});
+  text.classList.add('anim2');
+  author.classList.add('anim2');
+
+  //set style attributes when animation ends.
+  body.addEventListener('animationend', () => {body.classList.remove('anim1'); body.style.backgroundColor = color;});
+  text.addEventListener('animationend', () => {text.classList.remove('anim2'); text.style.color = color;});
+  author.addEventListener('animationend', () => {author.classList.remove('anim2'); author.style.color = color;});
+  newQuote.addEventListener('animationend', () => {newQuote.classList.remove('anim1'); newQuote.style.backgroundColor = color;});
+  tweetQuote.addEventListener('animationend', () => {tweetQuote.classList.remove('anim1'); tweetQuote.style.backgroundColor = color;});
 
   /*
-  //Adding a class and adding an event listener for animationend to remove the class.
-  body.classList.add('anim1');
-  body.addEventListener('animationend', function() {document.body.classList.remove('anim1')});
-  
-  //Adding a class, setting animation to none, and setting animation to '' after a timer' 
-  body.classList.add('anim1');
-  body.style.animation = 'none';
-  setTimeout(function () {body.style.animation = '';}, 10);
+  //Alternate approach to allowing animation to repeat:
 
-  //Another method would be to clone and replace the element.
-  
-  //Old logic for color change
-  let color = colors[random(colors)];
-  body.style.backgroundColor = color;
-  text.style.color = color;
-  author.style.color = color;
-  newQuote.style.backgroundColor = color;
-  tweetQuote.style.backgroundColor = color;
+  //Remove class(if present) and trigger reflow(before adding class)
+  body.classList.remove('anim1');
+  newQuote.classList.remove('anim1');
+  tweetQuote.classList.remove('anim1');
+  text.classList.remove('anim2');
+  author.classList.remove('anim2');
+  body.offsetHeight; //trigger reflow
   */
 }
 
 //disabling event while callback function(animation) is running
+
 let animating = false;
 function inhibitor() {
+  //This function checks if animating is false before setting animating to true and calling change().
   if (animating == false) {
     animating = true;
-    colorChange();
-    randomQuote();
+    change();
   }
 }
+//resets animating to false when the animation triggered within change() ends.
 body.addEventListener('animationend', function() {animating = false});
 
+//Adds event listeners to window(load) and newQuote button(click).
 newQuote.addEventListener('click', inhibitor);
-newQuote.addEventListener('click', inhibitor);
-window.addEventListener('load', randomQuote);
-window.addEventListener('load', colorChange);
+window.addEventListener('load', inhibitor);
 
-
-//REPLICATE RANDOM COLORS WITH CSS VARIABLES AND FADING TEXT
+//ADD TWEET BUTTON FUNCTIONALITY
