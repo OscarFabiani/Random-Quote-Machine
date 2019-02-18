@@ -1,8 +1,12 @@
+:root {
+  --color1: blueviolet;
+}
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: blue;
 }
 #quote-box {
   display: flex;
@@ -19,12 +23,14 @@ body {
   font-size: 30px;
   font-weight: bolder;
   text-align: center;
+  color: blue;
 }
 #author {
   display: flex;
   align-self: flex-end;
   padding: 20px 5px 5px 5px;
   font-size: 20px;
+  color: blue;
 }
 #new-quote {
   position: relative;
@@ -33,6 +39,7 @@ body {
   align-self: flex-end;
   top: 40px;
   color: white;
+  background-color: blue;
 }
 #new-quote:hover {
   cursor: pointer;
@@ -42,6 +49,7 @@ body {
   border-radius: 3px;
   padding: 10px;
   color: white;
+  background-color: blue;
 }
 #tweet-quote:hover {
   cursor: pointer;
@@ -56,11 +64,8 @@ body {
   animation-fill-mode: forwards;
 }
 @keyframes anim1 {
-  0% {
-    background-color: blueviolet
-  }
   100% {
-    background-color: darkgoldenrod;
+    background-color: var(--color1);
   }
 }
 .anim2 {
@@ -70,17 +75,21 @@ body {
   animation-fill-mode: forwards;
 }
 @keyframes anim2 {
-  0% {
-    color: blueviolet;
-    /*opacity: 1;*/
+  100% {
+    color: var(--color1);
   }
-  /*
+}
+.anim3 {
+  animation-name: anim3;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+@keyframes anim3 {
   75% {
     opacity: 0;
   }
-  */
   100% {
-    color: darkgoldenrod;
-    /*opacity: 1;*/
+    opacity: 1;
   }
 }
