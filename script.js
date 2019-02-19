@@ -18,12 +18,19 @@ const quotes = [
 ];
 
 const colors = [
-  'red',
-  'green',
-  'blue',
-  'orange',
-  'brown'
-]
+  'rgb(22, 160, 133)',
+  'rgb(39, 174, 96)',
+  'rgb(44, 62, 80)',
+  'rgb(243, 156, 18)',
+  'rgb(231, 76, 60)',
+  'rgb(155, 89, 182)',
+  'rgb(251, 105, 100)',
+  'rgb(52, 34, 36)',
+  'rgb(71, 46, 50)',
+  'rgb(189, 187, 153)',
+  'rgb(119, 177, 169)',
+  'rgb(115, 168, 87)'
+];
 
 function random(list) {
   //This function takes a list and returns a random index place.
@@ -36,7 +43,9 @@ function change() {
 
   //set random color and index and check for duplicate.
   let color = colors[random(colors)];
+  console.log(body.style.backgroundColor);
   while (color == body.style.backgroundColor) {
+    console.log(true);
     color = colors[random(colors)];
   }
   let index = random(quotes);
