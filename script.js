@@ -44,6 +44,9 @@ function change() {
     index = random(quotes);
   }
 
+  //setting tweetQuote href including current quote/author.
+  tweetQuote.href = "https://twitter.com/intent/tweet?hashtags=quotes&text=" + quotes[index][1] + ' ' + quotes[index][0];
+
   //set text and author after 1 second
   setTimeout(function() {text.innerHTML = quotes[index][1];}, 500);
   setTimeout(function() {author.innerHTML = quotes[index][0];}, 500);
@@ -98,5 +101,3 @@ body.addEventListener('animationend', function() {animating = false});
 //Adds event listeners to window(load) and newQuote button(click).
 newQuote.addEventListener('click', inhibitor);
 window.addEventListener('load', inhibitor);
-
-//ADD TWEET BUTTON FUNCTIONALITY
