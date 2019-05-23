@@ -1,0 +1,86 @@
+
+//Element Styling
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: blue;
+}
+
+//Animations
+.anim1 {
+  animation-name: anim1;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+@keyframes anim1 {
+  100% {
+    background-color: var(--color1);
+  }
+}
+.anim2 {
+  animation-name: anim2;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+@keyframes anim2 {
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    color: var(--color1);
+  }
+}
+
+//Main Styling
+#quote-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 40px;
+  width: 500px;
+  border-radius: 1%;
+  background-color: whitesmoke;
+}
+#text {
+  display: flex;
+  font-size: 30px;
+  font-weight: bolder;
+  text-align: center;
+}
+#author {
+  display: flex;
+  align-self: flex-end;
+  padding: 20px 5px 5px 5px;
+  font-size: 20px;
+}
+#new-quote {
+  position: relative;
+  border-radius: 3px;
+  padding: 10px;
+  align-self: flex-end;
+  top: 40px;
+  color: whitesmoke;
+}
+#new-quote:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+#tweet-quote {
+  align-self: flex-start;
+  border-radius: 3px;
+  padding: 10px;
+  color: whitesmoke;
+}
+#tweet-quote:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+#tweet-quote{
+  text-decoration: none;
+}
