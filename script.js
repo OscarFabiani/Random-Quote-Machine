@@ -111,7 +111,7 @@ body.addEventListener('animationend', function() {animating = false});
 newQuote.addEventListener('click', inhibitor);
 window.addEventListener('load', inhibitor);
 
+
 /*
 To possibly add: AJAX/JSON for quotes, jQuery or other library for alternative method of animation, and an iFrame check.
-
 */
