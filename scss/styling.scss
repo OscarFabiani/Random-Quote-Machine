@@ -37,7 +37,7 @@ body {
 }
 
 //Main Styling
-#quote-box {
+.quote-box {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,19 +47,19 @@ body {
   border-radius: 1%;
   background-color: whitesmoke;
 }
-#text {
+.text {
   display: flex;
   font-size: 30px;
   font-weight: bolder;
   text-align: center;
 }
-#author {
+.author {
   display: flex;
   align-self: flex-end;
   padding: 20px 5px 5px 5px;
   font-size: 20px;
 }
-#new-quote {
+.new-quote {
   position: relative;
   border-radius: 3px;
   padding: 10px;
@@ -67,20 +67,20 @@ body {
   top: 40px;
   color: whitesmoke;
 }
-#new-quote:hover {
+.new-quote:hover {
   cursor: pointer;
   opacity: 0.9;
 }
-#tweet-quote {
+.tweet-quote {
   align-self: flex-start;
   border-radius: 3px;
   padding: 10px;
   color: whitesmoke;
 }
-#tweet-quote:hover {
+.tweet-quote:hover {
   cursor: pointer;
   opacity: 0.9;
 }
-#tweet-quote{
+.tweet-quote{
   text-decoration: none;
 }
