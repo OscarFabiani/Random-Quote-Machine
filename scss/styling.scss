@@ -52,12 +52,14 @@ body {
   font-size: 30px;
   font-weight: bolder;
   text-align: center;
+  user-select: none;
 }
 .author {
   display: flex;
   align-self: flex-end;
   padding: 20px 5px 5px 5px;
   font-size: 20px;
+  user-select: none;
 }
 .new-quote {
   position: relative;
